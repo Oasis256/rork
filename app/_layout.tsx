@@ -4,6 +4,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { Platform } from "react-native";
+
 import { ErrorBoundary } from "./error-boundary";
 
 export const unstable_settings = {
@@ -45,9 +46,15 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerBackTitle: "Back",
+      }}
+    >
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+      <Stack.Screen name="book/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="player/[id]" options={{ headerShown: false, presentation: 'modal' }} />
+      <Stack.Screen name="login" options={{ headerShown: false }} />
     </Stack>
   );
 }
